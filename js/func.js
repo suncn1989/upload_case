@@ -8,5 +8,29 @@ function cancel()
 
 function submit()
 {
-	
+	document.info.submit();
+}
+
+function check()
+{
+	if ($("#text_title").val() == "")
+	{
+		alert("Title为空!");
+		return false;
+	}
+	else if ($("#text_name").val() == "")
+	{
+		alert("Name为空！");
+		return false;
+	}
+	else if ($("#text_content").val() == "")
+	{
+		alert("Content为空！");
+		return false;
+	}
+	else
+	{
+		submit();
+		return true;
+	}
 }
