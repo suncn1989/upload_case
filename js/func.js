@@ -5,3 +5,8 @@ function cancel()
 	$("#text_name").val("");
 	$("#text_content").val("");
 }
+
+function submit()
+{
+	
+}
