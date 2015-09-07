@@ -37,3 +37,19 @@
 {
 	text-align:center;
 }
+#table_head
+{
+	height:50px;
+}
+
+#table_container
+{
+	padding-right:30px;
+}
+
+#btn-status
+{
+	width:100px;
+	margin-left:20px;
+	text-align:center;
+}
