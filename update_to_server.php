@@ -13,7 +13,7 @@
 	$user = "root";
 	$password = "";
 	
-	$db = new mysqli($url,$user,$password,'mysql');
+	$db = new mysqli($url,$user,$password,'jsbccase');
 	if(!$db)
 	{
 		echo "Connect ERROR!";
@@ -33,6 +33,6 @@
 	}
 	$db->close();
 	
-	//header("location: success.html");
+	header("location: success.html");
 
 ?>

@@ -20,7 +20,7 @@
             $user = "root";
             $password = "";
             
-            $db = new mysqli($url,$user,$password,'mysql');
+            $db = new mysqli($url,$user,$password,'jsbccase');
             if(!$db)
             {
                 echo "Connect ERROR!";
@@ -32,21 +32,66 @@
 	<table class="table table-hover">
     <thead>
       <tr>
-         <th>日期</th>
          <th>标题</th>
-         <th>提交人</th>
          <th>内容</th>
+         <th>状态</th>
+         <th>提交人</th>
+         <th>日期</th>
       </tr>
       <tbody>
             <?php
 				while($row = $result -> fetch_row())
 				{
-					echo "<tr>";
-						echo "<td>".$row[1]."</td>";
-						echo "<td>".$row[2]."</td>";
-						echo "<td>".$row[3]."</td>";
-						echo "<td>".$row[4]."</td>";
-					echo "</tr>";
+					if ($row[5] == "undef")
+					{
+						echo "<tr>";
+							echo "<td>".$row[2]."</td>";
+							echo "<td>".$row[4]."</td>";
+							echo "<td><span class=\"label label-default\">Undefine</span></td>";
+							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[1]."</td>";
+						echo "</tr>";
+					}
+					else if ($row[5] == "需求分析")
+					{
+						echo "<tr>";
+							echo "<td>".$row[2]."</td>";
+							echo "<td>".$row[4]."</td>";
+							echo "<td><span class=\"label label-primary\">需求分析</span></td>";
+							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[1]."</td>";
+						echo "</tr>";
+					}
+					else if ($row[5] == "Demo开发")
+					{
+						echo "<tr>";
+							echo "<td>".$row[2]."</td>";
+							echo "<td>".$row[4]."</td>";
+							echo "<td><span class=\"label label-success\">Demo开发</span></td>";
+							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[1]."</td>";
+						echo "</tr>";
+					}
+					else if ($row[5] == "电信测试")
+					{
+						echo "<tr>";
+							echo "<td>".$row[2]."</td>";
+							echo "<td>".$row[4]."</td>";
+							echo "<td><span class=\"label label-info\">电信测试</span></td>";
+							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[1]."</td>";
+						echo "</tr>";
+					}
+					else if ($row[5] == "电信正式")
+					{
+						echo "<tr class=\"danger\">";
+							echo "<td><s>".$row[2]."</s></td>";
+							echo "<td><s>".$row[4]."</td>";
+							echo "<td><span class=\"label label-warning\">电信正式</span></td>";
+							echo "<td><s>".$row[3]."</s></td>";
+							echo "<td><s>".$row[1]."</s></td>";
+						echo "</tr>";
+					}
 				}           
             ?>
       </tbody>
