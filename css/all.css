@@ -1,14 +1,4 @@
-#title
-{
-	margin-top:40px;
-}
-
-#name
-{
-	margin-top:40px;
-}
-
-#content
+#list_content
 {
 	margin-top:40px;
 }
@@ -52,4 +42,15 @@
 	width:100px;
 	margin-left:20px;
 	text-align:center;
+}
+
+#head_con
+{
+	text-align:center;
+	margin-top:60px;
+}
+
+#type_choose
+{
+	
 }
