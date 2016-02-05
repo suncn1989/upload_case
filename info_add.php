@@ -3,11 +3,14 @@
 	header("Content-type: text/html; charset=utf-8");
 	
 	$text_title = $_POST['text_title'];
+	$text_type_choose = $_POST['type_choose'];
 	$text_name = $_POST['text_name'];
 	$text_content = $_POST['text_content'];
 	
+	
 	//test
 	echo "title:".$text_title."</br>";
+	echo "text_type_choose:".$text_type_choose."</br>";
 	echo "name:".$text_name."</br>";
 	echo "content:".$text_content."</br>";
 	//test
@@ -48,5 +51,5 @@
 	}
 	$db->close();
 	
-	header("location: success.html");
+	//header("location: success.html");
 ?>

@@ -1,4 +1,33 @@
 // JavaScript Document
+
+var type_choose_group = null;
+/*
+$('#btn-new').on('click', function () {
+    $(this).val("fuck me"); // button text will be "finished!"
+  })
+*/
+$(document).ready(function(){
+	$('#btn-new').on('click', function () {
+		$(this).attr("class","btn btn-info btn-lg");
+		$('#btn-modify').attr("class","btn btn-default btn-lg");
+		$('#btn-optimize').attr("class","btn btn-default btn-lg");
+		type_choose_group = "new";
+	});
+	$('#btn-modify').on('click', function () {
+		$(this).attr("class","btn btn-info btn-lg");
+		$('#btn-new').attr("class","btn btn-default btn-lg");
+		$('#btn-optimize').attr("class","btn btn-default btn-lg");
+		type_choose_group = "modify";
+	});
+	$('#btn-optimize').on('click', function () {
+		$(this).attr("class","btn btn-info btn-lg");
+		$('#btn-new').attr("class","btn btn-default btn-lg");
+		$('#btn-modify').attr("class","btn btn-default btn-lg");
+		type_choose_group = "optimize";
+	});
+
+});
+
 function cancel()
 {
 	$("#text_title").val("");
@@ -8,6 +37,12 @@ function cancel()
 
 function submit()
 {
+	alert(type_choose_group);
+		$.ajax({
+		url:"info_add.php",
+		type:"POST",
+		data:{type_choose:type_choose_group},
+		});
 	document.info.submit();
 }
 
@@ -15,24 +50,32 @@ function check()
 {
 	if ($("#text_title").val() == "")
 	{
-		alert("Title为空!");
+		alert("需求名称为空!");
 		return false;
 	}
 	else if ($("#text_name").val() == "")
 	{
-		alert("Name为空！");
+		alert("上传人姓名为空！");
 		return false;
 	}
 	else if ($("#text_content").val() == "")
 	{
-		alert("Content为空！");
+		alert("需求内容为空！");
+		return false;
+	}
+	else if (type_choose_group == null)
+	{
+		alert("请选择更新类型！");
 		return false;
 	}
 	else
 	{
+	
 		submit();
 		return true;
 	}
+	
+	//alert($)
 }
 
 function click_require(num,id)

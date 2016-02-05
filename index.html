@@ -31,16 +31,8 @@
                     <span class="input-group-addon" id="basic-addon1">
                         <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> 需求更新名称:
                     </span>
-                    <input type="text" class="form-control" id="text_title" placeholder="格式：<N>(新需求)/<M>(修改)/<O>(优化) + ****** e.g.<N>新增按钮" aria-describedby="basic-addon1" name="text_title">
-                </div>
-            </div>
-            
-            <div id="list_content">
-                <div class="input-group input-group-lg">
-                    <span class="input-group-addon" id="basic-addon1">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 上传人姓名:&nbsp;&nbsp;&nbsp;
-                    </span>
-                    <input type="text" class="form-control" id="text_name" placeholder="需求上传者的姓名" aria-describedby="basic-addon1" name="text_name">
+                    <!--<input type="text" class="form-control" id="text_title" placeholder="格式：<N>(新需求)/<M>(修改)/<O>(优化) + ****** e.g.<N>新增按钮" aria-describedby="basic-addon1" name="text_title">-->
+                    <input type="text" class="form-control" id="text_title" placeholder="请输入需求更新的名称" aria-describedby="basic-addon1" name="text_title">
                 </div>
             </div>
             
@@ -50,10 +42,30 @@
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 需求更新类型:
                     </span>
                     <div id="type_choose_group" class="btn-group btn-group-justified" role="group" aria-label="type_choose btn group">
-                        <a href="#" class="btn btn-default" role="button">新增</a>
-                        <a href="#" class="btn btn-default" role="button">修改</a>
-                        <a href="#" class="btn btn-default" role="button">优化</a>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-lg" id="btn-new">新增</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-lg" id="btn-modify">修改</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-lg" id="btn-optimize">优化</button>
+                        </div>
+                        <!--
+                        <a href="#" class="btn btn-default" role="button" id="btn-new" data-complete-text="finished!">新增</a>
+                        <a href="#" class="btn btn-default" role="button" id="btn-modify">修改</a>
+                        <a href="#" class="btn btn-default" role="button" id="btn-optimize">优化</a>
+                        -->
 					</div>
+                </div>
+            </div>
+            
+            <div id="list_content">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="basic-addon1">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 上传人姓名:&nbsp;&nbsp;&nbsp;
+                    </span>
+                    <input type="text" class="form-control" id="text_name" placeholder="需求上传者的姓名" aria-describedby="basic-addon1" name="text_name">
                 </div>
             </div>
             
