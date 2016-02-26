@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `upload_case` (
   `id` text NOT NULL,
   `creat_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `title` text NOT NULL,
+  `update_type` text,
   `name` text NOT NULL,
   `content` text NOT NULL,
   `status` text NOT NULL

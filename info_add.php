@@ -37,9 +37,9 @@
 	
 	echo "status:".$status."</br>";
 	$db->query("set names utf8");
-	$query = "insert into upload_case(id,title,name,content,status) values ('".$id."','".$text_title."','".$text_name."','".$text_content."','".$status."')";
+	$query = "insert into upload_case(id,title,update_type,name,content,status) values ('".$id."','".$text_title."','".$text_type_choose."','".$text_name."','".$text_content."','".$status."')";
 	echo "query:".$query."</br>";
-	//$query = "insert into upload_case(id,title,name,content,status) values ('1048575.9999821','aa','nnn','dddd','ffff')";
+	//$query = "insert into upload_case(id,title,update_type,name,content,status) values ('1048575.9999821','aa','new','nnn','dddd','ffff')";
 	$result = $db->query($query);
 	if($result)
 	{
@@ -51,5 +51,5 @@
 	}
 	$db->close();
 	
-	//header("location: success.html");
+	header("location: success.html");
 ?>

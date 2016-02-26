@@ -27,7 +27,7 @@
                 echo "Connect ERROR!";
             }
             $db->query("set names utf8");
-            $query = "SELECT * FROM `upload_case`";
+            $query = "SELECT * FROM `upload_case` order by `creat_time` desc";
             $result = $db->query($query);
 ?>
 <form id="update_table_status" action="update_to_server.php"  method="post" name="update_table_status"  accept-charset="utf-8" onsubmit="return checkStatus();">
@@ -51,6 +51,7 @@
       	 <th>ID</th>
          <th>日期</th>
          <th>标题</th>
+         <th>需求类型</th>
          <th>提交人</th>
          <th>内容</th>
          <th style="margin-left:20px;">状态</th>
@@ -66,46 +67,9 @@
 						echo "<td>".$row[2]."</td>";
 						echo "<td>".$row[3]."</td>";
 						echo "<td>".$row[4]."</td>";
+						echo "<td>".$row[5]."</td>";
 						echo "<td>";
-							if ($row[5] == "undef")
-							{
-								echo "<div class=\"btn-group\">";
-									echo "<button type=\"button\" id=\"status_btn_".$i."\" class=\"btn btn-danger dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
-										echo "status <span class=\"caret\"></span>";
-									echo "</button>";
-								echo "<ul class=\"dropdown-menu\">";
-									echo "<li><a href=\"#\" onclick=\"click_require(".$i.",".$row[0].");\">需求分析</a></li>";
-									echo "<li><a href=\"#\" onclick=\"click_demo(".$i.",".$row[0].");\">Demo开发</a></li>";
-									echo "<li><a href=\"#\" onclick=\"click_test(".$i.",".$row[0].");\">电信测试</a></li>";
-									echo "<li><a href=\"#\" onclick=\"click_official(".$i.",".$row[0].");\">电信正式</a></li>";
-								echo "</ul>";
-								echo "</div>";
-							}
-							else if ($row[5] == "需求分析")
-							{
-								echo "<div class=\"btn-group\">";
-									echo "<button type=\"button\" class=\"btn btn-primary\">需求分析</button>";
-								echo "</div>";
-							}
-							else if ($row[5] == "Demo开发")
-							{
-								echo "<div class=\"btn-group\">";
-									echo "<button type=\"button\" class=\"btn btn-success\">Demo开发</button>";
-								echo "</div>";
-							}
-							else if ($row[5] == "电信测试")
-							{
-								echo "<div class=\"btn-group\">";
-									echo "<button type=\"button\" class=\"btn btn-info\">电信测试</button>";
-								echo "</div>";
-							}
-							else if ($row[5] == "电信正式")
-							{
-								echo "<div class=\"btn-group\">";
-									echo "<button type=\"button\" class=\"btn btn-warning\">电信正式</button>";
-								echo "</div>";
-							}
-							else
+							if ($row[6] == "undef")
 							{
 								echo "<div class=\"btn-group\">";
 									echo "<button type=\"button\" id=\"status_btn_".$i."\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
@@ -116,6 +80,86 @@
 									echo "<li><a href=\"#\" onclick=\"click_demo(".$i.",".$row[0].");\">Demo开发</a></li>";
 									echo "<li><a href=\"#\" onclick=\"click_test(".$i.",".$row[0].");\">电信测试</a></li>";
 									echo "<li><a href=\"#\" onclick=\"click_official(".$i.",".$row[0].");\">电信正式</a></li>";
+									echo "<li><a href=\"#\" onclick=\"click_cancel(".$i.",".$row[0].");\">取消需求</a></li>";
+								echo "</ul>";
+								echo "</div>";
+							}
+							else if ($row[6] == "需求分析")
+							{
+								echo "<div class=\"btn-group\">";
+									//echo "<button type=\"button\" class=\"btn btn-primary\">需求分析</button>";
+									echo "<button type=\"button\" id=\"status_btn_".$i."\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+										echo "需求分析 <span class=\"caret\"></span>";
+									echo "</button>";
+									echo "<ul class=\"dropdown-menu\">";
+										echo "<li><a href=\"#\" onclick=\"click_require(".$i.",".$row[0].");\">需求分析</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_demo(".$i.",".$row[0].");\">Demo开发</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_test(".$i.",".$row[0].");\">电信测试</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_official(".$i.",".$row[0].");\">电信正式</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_cancel(".$i.",".$row[0].");\">取消需求</a></li>";
+									echo "</ul>";
+								echo "</div>";
+							}
+							else if ($row[6] == "Demo开发")
+							{
+								echo "<div class=\"btn-group\">";
+									//echo "<button type=\"button\" class=\"btn btn-success\">Demo开发</button>";
+									echo "<button type=\"button\" id=\"status_btn_".$i."\" class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+										echo "Demo开发 <span class=\"caret\"></span>";
+									echo "</button>";
+									echo "<ul class=\"dropdown-menu\">";
+										echo "<li><a href=\"#\" onclick=\"click_require(".$i.",".$row[0].");\">需求分析</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_demo(".$i.",".$row[0].");\">Demo开发</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_test(".$i.",".$row[0].");\">电信测试</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_official(".$i.",".$row[0].");\">电信正式</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_cancel(".$i.",".$row[0].");\">取消需求</a></li>";
+									echo "</ul>";
+								echo "</div>";
+							}
+							else if ($row[6] == "电信测试")
+							{
+								echo "<div class=\"btn-group\">";
+									//echo "<button type=\"button\" class=\"btn btn-info\">电信测试</button>";
+									echo "<button type=\"button\" id=\"status_btn_".$i."\" class=\"btn btn-info dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+										echo "电信测试 <span class=\"caret\"></span>";
+									echo "</button>";
+									echo "<ul class=\"dropdown-menu\">";
+										echo "<li><a href=\"#\" onclick=\"click_require(".$i.",".$row[0].");\">需求分析</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_demo(".$i.",".$row[0].");\">Demo开发</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_test(".$i.",".$row[0].");\">电信测试</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_official(".$i.",".$row[0].");\">电信正式</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_cancel(".$i.",".$row[0].");\">取消需求</a></li>";
+									echo "</ul>";
+								echo "</div>";
+							}
+							else if ($row[6] == "电信正式")
+							{
+								echo "<div class=\"btn-group\">";
+									//echo "<button type=\"button\" class=\"btn btn-warning\">电信正式</button>";
+									echo "<button type=\"button\" id=\"status_btn_".$i."\" class=\"btn btn-warning dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+										echo "电信正式 <span class=\"caret\"></span>";
+									echo "</button>";
+									echo "<ul class=\"dropdown-menu\">";
+										echo "<li><a href=\"#\" onclick=\"click_require(".$i.",".$row[0].");\">需求分析</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_demo(".$i.",".$row[0].");\">Demo开发</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_test(".$i.",".$row[0].");\">电信测试</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_official(".$i.",".$row[0].");\">电信正式</a></li>";
+										echo "<li><a href=\"#\" onclick=\"click_cancel(".$i.",".$row[0].");\">取消需求</a></li>";
+									echo "</ul>";
+								echo "</div>";
+							}
+							else if ($row[6] == "取消需求")
+							{
+								echo "<div class=\"btn-group\">";
+									echo "<button type=\"button\" id=\"status_btn_".$i."\" class=\"btn btn-danger dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+										echo "取消需求 <span class=\"caret\"></span>";
+									echo "</button>";
+								echo "<ul class=\"dropdown-menu\">";
+									echo "<li><a href=\"#\" onclick=\"click_require(".$i.",".$row[0].");\">需求分析</a></li>";
+									echo "<li><a href=\"#\" onclick=\"click_demo(".$i.",".$row[0].");\">Demo开发</a></li>";
+									echo "<li><a href=\"#\" onclick=\"click_test(".$i.",".$row[0].");\">电信测试</a></li>";
+									echo "<li><a href=\"#\" onclick=\"click_official(".$i.",".$row[0].");\">电信正式</a></li>";
+									echo "<li><a href=\"#\" onclick=\"click_cancel(".$i.",".$row[0].");\">取消需求</a></li>";
 								echo "</ul>";
 								echo "</div>";
 							}
