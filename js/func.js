@@ -1,29 +1,27 @@
 // JavaScript Document
 
 var type_choose_group = null;
-/*
-$('#btn-new').on('click', function () {
-    $(this).val("fuck me"); // button text will be "finished!"
-  })
-*/
 $(document).ready(function(){
 	$('#btn-new').on('click', function () {
 		$(this).attr("class","btn btn-info btn-lg");
 		$('#btn-modify').attr("class","btn btn-default btn-lg");
 		$('#btn-optimize').attr("class","btn btn-default btn-lg");
-		type_choose_group = "new";
+		type_choose_group = "新增";
+		$('#type_choose').val(type_choose_group);
 	});
 	$('#btn-modify').on('click', function () {
 		$(this).attr("class","btn btn-info btn-lg");
 		$('#btn-new').attr("class","btn btn-default btn-lg");
 		$('#btn-optimize').attr("class","btn btn-default btn-lg");
-		type_choose_group = "modify";
+		type_choose_group = "修改";
+		$('#type_choose').val(type_choose_group);
 	});
 	$('#btn-optimize').on('click', function () {
 		$(this).attr("class","btn btn-info btn-lg");
 		$('#btn-new').attr("class","btn btn-default btn-lg");
 		$('#btn-modify').attr("class","btn btn-default btn-lg");
-		type_choose_group = "optimize";
+		type_choose_group = "优化";
+		$('#type_choose').val(type_choose_group);
 	});
 
 });
@@ -37,6 +35,7 @@ function cancel()
 
 function submit()
 {
+<<<<<<< HEAD
 	//alert(type_choose_group);
 		$.ajax({
 		url:'info_add.php',
@@ -49,6 +48,8 @@ function submit()
         }
 		});
 
+=======
+>>>>>>> 7b588210b3585a880074d2a69818b5d27a6f1a14
 	document.info.submit();
 }
 
@@ -81,7 +82,6 @@ function check()
 		return true;
 	}
 	
-	//alert($)
 }
 
 function click_require(num,id)
@@ -115,6 +115,15 @@ function click_official(num,id)
 	$("#status_id").val(id);
 	$("#status_btn_"+num).removeClass().addClass("btn btn-warning dropdown-toggle");
 }
+
+function click_cancel(num,id)
+{
+	$("#status_btn_"+num).text("取消需求");
+	$("#status").val("取消需求");
+	$("#status_id").val(id);
+	$("#status_btn_"+num).removeClass().addClass("btn btn-danger dropdown-toggle");
+}
+
 
 function checkStatus()
 {

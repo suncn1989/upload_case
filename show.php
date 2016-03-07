@@ -15,6 +15,11 @@
 
 <body>
 
+        <nav class="navbar navbar-default">
+            <p class="navbar-text"><a href="index.html" class="navbar-brand">返回需求上传页</a></p>
+        </nav>
+    
+	
 <?php
             $url = "127.0.0.1";
             $user = "root";
@@ -26,13 +31,14 @@
                 echo "Connect ERROR!";
             }
             $db->query("set names utf8");
-            $query = "SELECT * FROM `upload_case`";
+            $query = "SELECT * FROM `upload_case` order by `creat_time` desc";
             $result = $db->query($query);
 ?>
 	<table class="table table-hover">
     <thead>
       <tr>
          <th>标题</th>
+         <th>需求类型</th>
          <th>内容</th>
          <th>状态</th>
          <th>提交人</th>
@@ -42,53 +48,57 @@
             <?php
 				while($row = $result -> fetch_row())
 				{
-					if ($row[5] == "undef")
+					if ($row[6] == "undef")
 					{
 						echo "<tr>";
 							echo "<td>".$row[2]."</td>";
-							echo "<td>".$row[4]."</td>";
+							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[5]."</td>";
 							echo "<td><span class=\"label label-default\">Undefine</span></td>";
-							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[4]."</td>";
 							echo "<td>".$row[1]."</td>";
 						echo "</tr>";
 					}
-					else if ($row[5] == "需求分析")
+					else if ($row[6] == "需求分析")
 					{
 						echo "<tr>";
 							echo "<td>".$row[2]."</td>";
-							echo "<td>".$row[4]."</td>";
+							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[5]."</td>";
 							echo "<td><span class=\"label label-primary\">需求分析</span></td>";
-							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[4]."</td>";
 							echo "<td>".$row[1]."</td>";
 						echo "</tr>";
 					}
-					else if ($row[5] == "Demo开发")
+					else if ($row[6] == "Demo开发")
 					{
 						echo "<tr>";
 							echo "<td>".$row[2]."</td>";
-							echo "<td>".$row[4]."</td>";
+							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[5]."</td>";
 							echo "<td><span class=\"label label-success\">Demo开发</span></td>";
-							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[4]."</td>";
 							echo "<td>".$row[1]."</td>";
 						echo "</tr>";
 					}
-					else if ($row[5] == "电信测试")
+					else if ($row[6] == "电信测试")
 					{
 						echo "<tr>";
 							echo "<td>".$row[2]."</td>";
-							echo "<td>".$row[4]."</td>";
-							echo "<td><span class=\"label label-info\">电信测试</span></td>";
 							echo "<td>".$row[3]."</td>";
+							echo "<td>".$row[5]."</td>";
+							echo "<td><span class=\"label label-info\">电信测试</span></td>";
+							echo "<td>".$row[4]."</td>";
 							echo "<td>".$row[1]."</td>";
 						echo "</tr>";
 					}
-					else if ($row[5] == "电信正式")
+					else if ($row[6] == "电信正式")
 					{
 						echo "<tr class=\"danger\">";
 							echo "<td><s>".$row[2]."</s></td>";
-							echo "<td><s>".$row[4]."</td>";
+							echo "<td><s>".$row[5]."</td>";
 							echo "<td><span class=\"label label-warning\">电信正式</span></td>";
-							echo "<td><s>".$row[3]."</s></td>";
+							echo "<td><s>".$row[4]."</s></td>";
 							echo "<td><s>".$row[1]."</s></td>";
 						echo "</tr>";
 					}
