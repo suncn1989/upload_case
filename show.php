@@ -96,6 +96,7 @@
 					{
 						echo "<tr class=\"danger\">";
 							echo "<td><s>".$row[2]."</s></td>";
+							echo "<td><s>".$row[3]."</td>";
 							echo "<td><s>".$row[5]."</td>";
 							echo "<td><span class=\"label label-warning\">电信正式</span></td>";
 							echo "<td><s>".$row[4]."</s></td>";
