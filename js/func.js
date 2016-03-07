@@ -37,12 +37,18 @@ function cancel()
 
 function submit()
 {
-	alert(type_choose_group);
+	//alert(type_choose_group);
 		$.ajax({
-		url:"info_add.php",
-		type:"POST",
-		data:{type_choose:type_choose_group},
+		url:'info_add.php',
+		type:'POST',
+		data:{type_choose: '1111'},
+		//error: function(){alert("fail");},
+		success: function(data){alert(data);},
+		error:function(msg){
+            alert('Error:'+msg);
+        }
 		});
+
 	document.info.submit();
 }
 
@@ -124,12 +130,12 @@ function checkStatus()
 	}
 	else
 	{
-		submit_status();
-		return true;
+		submit();
 	}
 }
-
+/*
 function submit_status()
 {
 	document.update_table_status.submit();
 }
+*/
