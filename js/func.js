@@ -35,7 +35,6 @@ function cancel()
 
 function submit()
 {
-<<<<<<< HEAD
 	//alert(type_choose_group);
 		$.ajax({
 		url:'info_add.php',
@@ -47,9 +46,6 @@ function submit()
             alert('Error:'+msg);
         }
 		});
-
-=======
->>>>>>> 7b588210b3585a880074d2a69818b5d27a6f1a14
 	document.info.submit();
 }
 
