@@ -1,6 +1,6 @@
 <?php
 	
-	header("Content-type: text/html; charset=utf-8");
+	include_once('connect.php');
 	
 	$text_title = $_POST['text_title'];
 	$text_type_choose = $_POST['type_choose'];
@@ -15,15 +15,6 @@
 	echo "content:".$text_content."</br>";
 	//test
 	
-	$url = "127.0.0.1";
-	$user = "root";
-	$password = "";
-	
-	$db = new mysqli($url,$user,$password,'jsbccase');
-	if(!$db)
-	{
-		echo "Connect ERROR!";
-	}
 	
 	$id = hexdec(uniqid())/(time()+microtime());
 	echo "id:".$id."</br>";
